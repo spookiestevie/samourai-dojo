@@ -28,9 +28,9 @@ tor_options=(
 if [ "$TOR_USE_BRIDGES" == "on" ]; then
   tor_options+=(--ClientTransportPlugin "obfs4 exec /usr/local/bin/obfs4proxy")
   tor_options+=(--UseBridges 1)
-  tor_options+=(--Bridge "obfs4 $TOR_BRIDGE_1_IP_PORT $TOR_BRIDGE_1_ID cert=$TOR_BRIDGE_1_CERT iat-mode=$TOR_BRIDGE_1_IAT_MODE")
-  tor_options+=(--Bridge "obfs4 $TOR_BRIDGE_2_IP_PORT $TOR_BRIDGE_2_ID cert=$TOR_BRIDGE_2_CERT iat-mode=$TOR_BRIDGE_2_IAT_MODE")
-  tor_options+=(--Bridge "obfs4 $TOR_BRIDGE_3_IP_PORT $TOR_BRIDGE_3_ID cert=$TOR_BRIDGE_3_CERT iat-mode=$TOR_BRIDGE_3_IAT_MODE")
+  tor_options+=(--Bridge "$TOR_BRIDGE_1")
+  tor_options+=(--Bridge "$TOR_BRIDGE_2")
+  tor_options+=(--Bridge "$TOR_BRIDGE_3")
 fi
 
 tor "${tor_options[@]}"
